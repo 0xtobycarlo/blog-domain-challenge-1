@@ -38,6 +38,21 @@ async function seed() {
     ]
     })
 
+    const createComment = await prisma.comment.create ({
+        data: {
+            content: "250 Characters Or Less",
+            postId: 1,
+            userId: 1,
+            replies: {
+                create: [{
+                    content: "Below 250 :)",
+                    postId: 1,
+                    userId: 1,
+                }]
+            }
+        },
+    })
+
     // Don't edit any of the code below this line
     process.exit(0);
 }
