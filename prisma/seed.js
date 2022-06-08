@@ -13,8 +13,13 @@ async function seed() {
 
     // Add your code here
 
-    
-
+    const createProfile = await prisma.profile.create ({
+        data: {
+            profilePic: "randomURL.com",
+            bio: "fegiuheriugheguegherhiugrgrug"
+            userId: 1
+        }
+    })
 
     // Don't edit any of the code below this line
     process.exit(0);
