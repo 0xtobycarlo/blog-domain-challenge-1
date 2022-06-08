@@ -28,3 +28,17 @@ model Profile {
   updatedAt   DateTime  @updatedAt
   posts       Post[]
 }
+
+model Post {
+  id            Int       @id @default(autoincrement())
+  content       String    @db.VarChar(250)
+  post          Post      @relation(fields: [postId], references: [id])
+  postId        Int
+  user          User      @relation(fields: [userId], references: [id])
+  userId        Int
+  topCommentId  Int?
+  topComment    Comment?  @relation("Replies", fields: [topCommentId], references: [id])
+  replies       Comment[] @relation("Replies")
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
